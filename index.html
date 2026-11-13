@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSc-pályaútmutató · Légijármű/űr → irodai mérnöki karrier</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b101c; --surface:#111828; --surface-2:#151d30; --surface-offset:#1a2440;
+  --border:#263350; --divider:#1e2a48;
+  --text:#e6ebf5; --muted:#93a0b8; --faint:#5d6a84;
+  --accent:#f0a845; --accent-soft:rgba(240,168,69,.13); --accent-line:rgba(240,168,69,.4);
+  --good:#4fd396; --good-soft:rgba(79,211,150,.12);
+  --mid:#f0a845; --mid-soft:rgba(240,168,69,.12);
+  --bad:#f07a6e; --bad-soft:rgba(240,122,110,.12);
+  --info:#6db3f2; --info-soft:rgba(109,179,242,.12);
+  --radius:14px; --radius-sm:9px;
+  --font-display:'Cabinet Grotesk','Satoshi',sans-serif;
+  --font-body:'Satoshi','Segoe UI',sans-serif;
+  --tr:200ms cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;min-height:100dvh}
+p,li{max-width:75ch}
+a{color:var(--info)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.15;text-wrap:balance}
+button{cursor:pointer;font:inherit;border:none;background:none;color:inherit}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ===== Layout ===== */
+.shell{max-width:1120px;margin:0 auto;padding:0 20px 90px}
+
+/* ===== Topbar ===== */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(11,16,28,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar-in{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:.02em;white-space:nowrap}
+.brand em{color:var(--accent);font-style:normal}
+.tabs{display:flex;gap:6px;flex-wrap:nowrap;margin-left:auto;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex:none;white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--muted);border:1px solid transparent;transition:all var(--tr)}
+.tab-btn:hover{color:var(--text);background:var(--surface-2)}
+.tab-btn.on{color:#0b101c;background:var(--accent);font-weight:700}
+
+/* ===== Hero ===== */
+.hero{padding:52px 0 8px}
+.kicker{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(28px,4.2vw,44px);font-weight:800;margin:10px 0 12px;max-width:22ch}
+.hero p{color:var(--muted);font-size:17px;max-width:62ch}
+.hero-sub{margin-top:8px;color:var(--faint);font-size:14px}
+
+/* ===== Stat strip ===== */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin:28px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;transition:border-color var(--tr)}
+.stat:hover{border-color:var(--accent-line)}
+.stat > b{display:block;font-family:var(--font-display);font-size:clamp(20px,2.4vw,26px);font-weight:800;color:var(--accent)}
+.stat span b{display:inline;font-family:inherit;font-size:inherit;font-weight:700;color:var(--text)}
+.stat span{font-size:13.5px;color:var(--muted);display:block;margin-top:3px;line-height:1.45;overflow-wrap:break-word}
+.stat .src{margin-top:6px}
+
+/* ===== Sections ===== */
+.tab{display:none;padding-top:34px}
+.tab.on{display:block;animation:fadein .3s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tab h2{font-size:clamp(21px,2.6vw,27px);font-weight:800;margin-bottom:6px}
+.tab .lede{color:var(--muted);margin-bottom:22px;max-width:70ch}
+
+/* ===== Filter chips ===== */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+.chip{padding:7px 14px;border-radius:999px;border:1px solid var(--border);color:var(--muted);font-size:13.5px;font-weight:500;transition:all var(--tr);background:var(--surface)}
+.chip:hover{border-color:var(--accent-line);color:var(--text)}
+.chip.on{background:var(--accent);color:#0b101c;border-color:var(--accent);font-weight:700}
+
+/* ===== Cards ===== */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:14px 0;overflow:hidden;transition:border-color var(--tr)}
+.card:hover{border-color:#33436b}
+.card-head{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;cursor:pointer;flex-wrap:wrap}
+.card-head h3{font-size:17px;font-weight:700;flex:1;min-width:200px}
+.card-head .exp{color:var(--faint);font-size:20px;line-height:1;transition:transform var(--tr);margin-top:2px}
+.card.open .exp{transform:rotate(45deg);color:var(--accent)}
+.card-body{display:none;padding:0 18px 18px}
+.card.open .card-body{display:block;animation:fadein .25s ease}
+.verdict{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.v-good{background:var(--good-soft);color:var(--good);border:1px solid rgba(79,211,150,.35)}
+.v-mid{background:var(--mid-soft);color:var(--mid);border:1px solid var(--accent-line)}
+.v-bad{background:var(--bad-soft);color:var(--bad);border:1px solid rgba(240,122,110,.35)}
+.v-info{background:var(--info-soft);color:var(--info);border:1px solid rgba(109,179,242,.35)}
+.facts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.fact{font-size:12.5px;color:var(--muted);background:var(--surface-2);border:1px solid var(--divider);border-radius:7px;padding:3px 9px}
+.fact b{color:var(--text);font-weight:700}
+.card-body p{margin:8px 0;font-size:15px}
+.card-body ul{margin:8px 0 8px 18px}
+.card-body li{margin:5px 0;font-size:15px}
+.src{font-size:12px;color:var(--faint);border-top:1px dotted var(--divider);margin-top:12px;padding-top:8px;line-height:1.7}
+.src a{color:#7d9dc7}
+
+/* ===== Specialization table ===== */
+.spec-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+.spec-table th{background:var(--surface-offset);color:var(--text);font-weight:700;text-align:left;padding:8px 10px;border:1px solid var(--divider);font-family:var(--font-display)}
+.spec-table td{border:1px solid var(--divider);padding:8px 10px;vertical-align:top;color:var(--muted)}
+.spec-table td b{color:var(--text)}
+.spec-table .rec{color:var(--text)}
+.spec-table .why{font-size:12.5px}
+
+/* ===== Scrollable tables (mobile) ===== */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px}
+.table-wrap table{min-width:560px}
+.scroll-hint{display:none;font-size:12.5px;color:var(--muted);margin:4px 0 8px}
+@media(max-width:700px){
+  .scroll-hint{display:block}
+  .table-wrap{box-shadow:inset -16px 0 14px -10px rgba(240,168,69,.35)}
+  .table-wrap.scrolled{box-shadow:none}
+}
+
+/* ===== Callout ===== */
+.callout{border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:15px}
+.callout b{color:var(--accent)}
+.callout.good{border-color:var(--good)}
+.callout.bad{border-color:var(--bad)}
+
+/* ===== Tables ===== */
+.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+.tbl th{background:var(--surface-offset);color:var(--text);font-weight:700;text-align:left;padding:9px 11px;border:1px solid var(--divider);font-family:var(--font-display)}
+.tbl td{border:1px solid var(--divider);padding:9px 11px;vertical-align:top;color:var(--muted)}
+.tbl td b{color:var(--text)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl .hi{color:var(--accent);font-weight:700}
+
+/* ===== Bars ===== */
+.bar-row{display:grid;grid-template-columns:150px 1fr 86px;gap:10px;align-items:center;margin:7px 0;font-size:13.5px}
+.bar-row .lbl{color:var(--muted);text-align:right}
+.bar-row .bar{height:22px;background:var(--surface-2);border-radius:6px;overflow:hidden;position:relative}
+.bar-row .fill{height:100%;border-radius:6px;display:block}
+.f-mid{background:var(--accent)}
+.f-fast{background:var(--good)}
+.f-slow{background:var(--bad)}
+.bar-row .val{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ===== Timeline ===== */
+.phase{display:flex;gap:16px;margin:18px 0;align-items:flex-start}
+.phase-n{flex:none;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#0b101c;font-family:var(--font-display);font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center}
+.phase-b{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;flex:1}
+.phase-b h3{font-size:16px;margin-bottom:6px}
+.phase-b li{margin:4px 0 4px 18px;font-size:15px;color:var(--muted)}
+.phase-b li b{color:var(--text)}
+
+/* ===== Path cards (overview) ===== */
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:16px 0}
+.path{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;position:relative}
+.path .pnum{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.path h3{font-size:17px;margin:6px 0 4px}
+.path p{font-size:14px;color:var(--muted);margin:6px 0}
+.path .who{font-size:12.5px;color:var(--faint);margin-top:8px;border-top:1px dotted var(--divider);padding-top:8px}
+
+.footnote{font-size:12.5px;color:var(--faint);margin-top:36px;border-top:1px solid var(--divider);padding-top:14px;line-height:1.7}
+
+@media(max-width:640px){
+  .tabs{margin-left:0}
+  .bar-row{grid-template-columns:100px 1fr 70px;font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-in">
+    <div class="brand">MSc-<em>pályaút</em></div>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn on" data-tab="attekintes">Áttekintés</button>
+      <button class="tab-btn" data-tab="szakok">Szakok</button>
+      <button class="tab-btn" data-tab="munkakorok">Munkakörök</button>
+      <button class="tab-btn" data-tab="cegek">Cégek</button>
+      <button class="tab-btn" data-tab="trainee">Trainee</button>
+      <button class="tab-btn" data-tab="szamok">Bérek és esélyek</button>
+      <button class="tab-btn" data-tab="ur">Űripar</button>
+      <button class="tab-btn" data-tab="terv">Terv</button>
+    </div>
+  </div>
+</nav>
+
+<main class="shell">
+
+<!-- ================= ÁTTEKINTÉS ================= -->
+<section class="tab on" id="attekintes">
+  <div class="hero">
+    <div class="kicker">Járműmérnök BSc · légijármű specializáció · Debrecen</div>
+    <h1>Irodai mérnöki karrier repülőgép- vagy űriparban</h1>
+    <p>Ez az útmutató a teljes, ellenőrzött kutatást sűríti össze: minden adat hivatalos egyetemi forrásból vagy nyilvános bérstatisztikából való. Öt kérdésre ad választ — milyen MSc-re menj, milyen munkakörök léteznek valójában, hol dolgozhatsz, mennyit keresel majd, és megéri-e az űrmérnök út.</p>
+    <p class="hero-sub">Készült 2026 novemberében · 40+ hivatalos forrás alapján · a ponthatárok a jelentkezés előtt ellenőrizendők</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>842 995 Ft</b><span>A 2022/23-ban végzett járműmérnök BSc-sek bruttó havi átlagkeresete 2024 decemberben — tehát átlagosan ~1,5 évvel a diploma után, <b>nem kezdőbér</b> (nettó kb. 560 ezer)</span><div class="src">DPR 2025</div></div>
+    <div class="stat"><b>~1,3 hónap</b><span>Átlagos idő az első munkáig műszaki végzettséggel</span><div class="src">DPR</div></div>
+    <div class="stat"><b>500–710 ezer Ft</b><span>Reális <b>pályakezdő</b> bruttó bér mérnöki pozícióban (Hays 2025) — ehhez ad hozzá az MSc és az évek során</span><div class="src">Hays 2025</div></div>
+    <div class="stat"><b>BSc elég</b><span>A céges trainee programok belépési szintje — az MSc előny, de nem feltétel</span><div class="src">BMW, Wizz, Bosch</div></div>
+  </div>
+
+  <h2 style="margin-top:34px">Három reális útvonal</h2>
+  <p class="lede">A kutatás után három értelmes út maradt — mindhárom nyitva tartja a repülés/űr ajtaját, csak más kockázattal.</p>
+  <div class="paths">
+    <div class="path">
+      <div class="pnum">A · Repülés</div>
+      <h3>BME járműmérnök MSc + Repülőmérnöki specializáció</h3>
+      <p>A légijármű BSc-d természetes folytatása: repülőgéptervezői tartalom (repülőgépek tervezése és gyártása, fejlett repüléselmélet), 2025 óta <b>levelezőn is</b> elérhető. Célpont: a gyulai Airbus tervezőiroda (Design Office).</p>
+      <div class="who">Kockázat: kevés, de valódi repülőgépipari pozíció itthon</div>
+    </div>
+    <div class="path">
+      <div class="pnum">B · Avionika / űr</div>
+      <h3>Mechatronika vagy villamosmérnök MSc</h3>
+      <p>A repülőgép és a műhold nagy része elektronika. A magyar űripar készség szerint vesz fel (C/C++, beágyazott Linux), nem szaknév szerint — ez az út az űrbe és az autóiparba is elvisz.</p>
+      <div class="who">Kockázat: a te BSc-ddel pótlások kellenek, de a piac a legszélesebb</div>
+    </div>
+    <div class="path">
+      <div class="pnum">C · Munka minél előbb</div>
+      <h3>Trainee program BSc-vel, MSc később</h3>
+      <p>Wizz Engineer Pathway (CAMO, tisztán irodai) vagy BMW AcceleratiON Debrecenben — mindkettő nyitott friss BSc-sekre. Az MSc később, akár levelezőn pótolható.</p>
+      <div class="who">Kockázat: a repülés-specifikus tervezői tudást később kell megszerezni</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>A legfontosabb tanulság:</b> a járműmérnök BSc-d értékesebb, mint gondoltad — de a „gyors elhelyezkedés" titka az egyetem alatti gyakornokság. A DPR-adatok szerint a végzettek 48,5%-ának már a diplomázáskor volt munkája. A legfontosabb teendőd a következő 1,5 évben nem a szakválasztás, hanem a <b>gyakornoki hely megszerzése</b> (BMW Debrecen, Wizz, Bosch, Airbus Gyula, Admatis Miskolc).
+  </div>
+</section>
+
+<!-- ================= SZAKOK ================= -->
+<section class="tab" id="szakok">
+  <h2>MSc szakok és specializációk</h2>
+  <p class="lede">Szűrd cél szerint — minden szaknál a specializációk magyarázatával: melyiket válaszd és miért. A „Neked?" oszlop az irodai, repülés/űr irányú célok szempontjából ítél.</p>
+
+  <div class="chips" id="szak-chips">
+    <button class="chip on" data-f="all">Mind</button>
+    <button class="chip" data-f="repules">Repülés</button>
+    <button class="chip" data-f="ur">Űr</button>
+    <button class="chip" data-f="auto">Autóipar</button>
+    <button class="chip" data-f="szeles">Legszélesebb piac</button>
+    <button class="chip" data-f="debrecen">Debrecenben maradás</button>
+  </div>
+
+  <!-- BME járműmérnök -->
+  <div class="card" data-tags="repules auto szeles">
+    <div class="card-head">
+      <h3>BME Járműmérnök MSc</h3>
+      <span class="verdict v-good">Fő út a repüléshez</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact"><b>4 félév</b>, 120 kredit</span>
+        <span class="fact">Ponthatár legutóbb <b>90</b></span>
+        <span class="fact">max <b>60 kredit</b> beszámítható a BSc-ből</span>
+        <span class="fact"><b>2025-től levelező</b> is (elmélet online)</span>
+        <span class="fact">Járműmérnök BSc = <b>egyenes bemenet</b></span>
+      </div>
+      <p>A légijármű specializációs BSc-d természetes folytatása — szakváltás nélkül, repülőgéptervezői tartalommal. Hat specializáció:</p>
+      <table class="spec-table">
+        <tr><th>Specializáció</th><th>Mi ez?</th><th>Neked?</th></tr>
+        <tr><td><b>Repülőmérnöki</b></td><td class="why">Repülőgépek tervezése és gyártása 1–2, Fejlett repüléselmélet, repülőgépes tárgyak</td><td class="rec"><span class="verdict v-good">Válaszd ezt</span> — az egyetlen itthoni repülőgéptervezői specializáció; a Gyulai Airbus Design Office pontosan ilyen profilú mérnököt keres</td></tr>
+        <tr><td><b>Autómérnöki</b></td><td class="why">Járműdinamika, hajtáslánc, járműelektronika</td><td class="rec"><span class="verdict v-mid">Tartalék</span> — ha az autóipar is érdekel (BMW Debrecen, Mercedes); széles piac, de nincs repülés-tartalom</td></tr>
+        <tr><td><b>Járműgyártás és javítás</b></td><td class="why">Gyártástechnológia, összeszerelés, minőségbiztosítás</td><td class="rec"><span class="verdict v-mid">Ha a gyártás érdekel</span> — a BMW gyár és beszállítói tömegesen keresnek ilyet</td></tr>
+        <tr><td><b>Élettartam tervező</b></td><td class="why">Fáradásos, tartós igénybevételi elemzés (fatigue)</td><td class="rec"><span class="verdict v-good">Rejtett érték</span> — ritka, CAE-szerű profil; a repülőgépiparban az alkatrész-élettartam kulcsképesség</td></tr>
+        <tr><td><b>Vasúti járműmérnöki</b></td><td class="why">Kötöttpályás járművek, vontatás</td><td class="rec"><span class="verdict v-bad">Nem célzott</span> — stabil (MÁV, Stadler-környék), de a repüléstől elvisz</td></tr>
+        <tr><td><b>Hajómérnöki</b></td><td class="why">Hajószerkezetek, hajógépészet</td><td class="rec"><span class="verdict v-bad">Nem célzott</span> — itthon kevés a pozíció</td></tr>
+      </table>
+      <div class="src">Források: <a href="https://kozlekedes.bme.hu/felvetelizoknek/msc-szakok/jarmumernok/">BME KJK</a> · <a href="https://kozlekedes.bme.hu/wp-content/uploads/2020/01/Jarmumernoki-MSc_MN_kepzesi-program-2025_26_mod_BP_DS.pdf">képzési program (PDF)</a> · <a href="https://felvi.bme.hu/szak/okleveles_jarmumernok">BME felvi (ponthatár)</a></div>
+    </div>
+  </div>
+
+  <!-- BME űrmérnök -->
+  <div class="card" data-tags="ur">
+    <div class="card-head">
+      <h3>BME Űrmérnök MSc</h3>
+      <span class="verdict v-mid">Tudatos döntéssel</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact"><b>Nincs specializáció</b> — egységes program</span>
+        <span class="fact">Ponthatár legutóbb <b>70</b></span>
+        <span class="fact">Évi <b>~100 jelentkező</b>, az első két évben ~60 felvett hallgató</span>
+      </div>
+      <p>Tartalom: űrrendszerek tervezése, űrkommunikáció, űrnavigáció, műholdas rendszerek és távérzékelés, megbízhatóság és minőségbiztosítás, európai űrszabványok. A szak a VIK (villamos) kar alatt fut, elektronika-szoftver beállítottsággal — a részletes előny-/hátránylistát és a „miben tudsz elhelyezkedni vele" táblázatot az <b>Űripar</b> fülnél találod.</p>
+      <div class="callout"><b>Õszintén:</b> a piac kicsi, és a hirdetések nem űrmérnök diplomát követelnek, hanem C/C++-t és beágyazott Linuxot. Akkor éri meg, ha a műhold <b>biztos</b> cél, nem csak hangzás.</div>
+      <div class="src">Forrás: <a href="https://felvi.bme.hu/szak/urmernok_msc">BME felvételi portál</a></div>
+    </div>
+  </div>
+
+  <!-- BME autonóm -->
+  <div class="card" data-tags="auto ur szeles">
+    <div class="card-head">
+      <h3>BME Autonóm járműirányítási mérnök MSc</h3>
+      <span class="verdict v-good">Egyenes bemenet</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact"><b>Angol nyelű</b></span>
+        <span class="fact">Ponthatár legutóbb <b>90</b> (versenyszak)</span>
+        <span class="fact">Önköltség <b>600 000 Ft/félév</b></span>
+        <span class="fact">Járműmérnök BSc = <b>egyenes bemenet</b></span>
+      </div>
+      <p>Tartalom: szabályozáselmélet, képfeldolgozás, járműipari környezetérzékelés, lokalizáció, mesterséges intelligencia, autonóm robotok, gépi látás. Egy specializáció (gépjárműipari). A <b>drón/UAV irány</b> természetes otthona — ha az autonóm repülő eszközök érdekelnek, ez a szak rájuk a legjobb válasz.</p>
+      <div class="src">Forrás: <a href="https://felvi.bme.hu/szak/autonom_jarmuiranyitasi_mernok_msc">BME felvételi portál</a></div>
+    </div>
+  </div>
+
+  <!-- BME gépészeti modellezés -->
+  <div class="card" data-tags="repules szeles">
+    <div class="card-head">
+      <h3>BME Gépészeti modellezés MSc</h3>
+      <span class="verdict v-good">Erős, rugalmas út</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact">Ponthatár legutóbb <b>76</b></span>
+        <span class="fact">Önköltség <b>500 000 Ft/félév</b> (a legolcsóbb)</span>
+      </div>
+      <p>CAD, CFD, végeselem, szimuláció — tiszta irodai munka. Öt specializáció:</p>
+      <table class="spec-table">
+        <tr><th>Specializáció</th><th>Mi ez?</th><th>Neked?</th></tr>
+        <tr><td><b>Áramlástechnika</b></td><td class="why">CFD: áramlások számítása</td><td class="rec"><span class="verdict v-good">Repülésre</span> — az aerodinamika közvetlen útja repülőgéptervezéshez</td></tr>
+        <tr><td><b>Szilárdságtani</b></td><td class="why">Végeselem (FEA): eltörik-e, meghajlik-e a szerkezet</td><td class="rec"><span class="verdict v-good">Repülésre</span> — repülőgépi szerkezetek szilárdsági elemzése pontosan ez</td></tr>
+        <tr><td><b>Hőtechnikai</b></td><td class="why">Turbínák, égés, hőerőgépek</td><td class="rec"><span class="verdict v-mid">Ha a hajtómű érdekel</span> — de itthon a hajtóműfejlesztés nagyon korlátozott</td></tr>
+        <tr><td><b>Design and Technology</b></td><td class="why">Angol nyelű tervezés + gyártástechnológia</td><td class="rec"><span class="verdict v-good">Angol + nemzetközi karrierhez</span> — a külföldi (Airbus/ESA) ajtókhoz</td></tr>
+        <tr><td><b>Nukleáris</b></td><td class="why">Reaktortechnológia, erőművi szimuláció</td><td class="rec"><span class="verdict v-mid">Jól fizet (Paks)</span> — de a repüléstől elvisz</td></tr>
+      </table>
+      <div class="src">Forrás: <a href="https://felvi.bme.hu/szak/gepeszeti_modellezes_msc">BME felvételi portál</a></div>
+    </div>
+  </div>
+
+  <!-- BME villamos -->
+  <div class="card" data-tags="ur szeles">
+    <div class="card-head">
+      <h3>BME Villamosmérnök MSc</h3>
+      <span class="verdict v-good">Avionika / űr bázisa</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact">Ponthatár legutóbb <b>70</b></span>
+        <span class="fact">Önköltség <b>600 000 Ft/félév</b></span>
+        <span class="fact">Más BSc-ből <b>50 kredit</b> előismeret kell</span>
+      </div>
+      <p>A repülőgép jelentős része elektronika — ez az irány erre a tudásra épít. Hét főspecializáció, ebből neked ezek:</p>
+      <table class="spec-table">
+        <tr><th>Specializáció</th><th>Mi ez?</th><th>Neked?</th></tr>
+        <tr><td><b>Intelligens beágyazott rendszerek</b></td><td class="why">A gépben futó szoftver és elektronika</td><td class="rec"><span class="verdict v-good">Űr + avionika fő út</span> — a magyar űripar pontosan ezt kéri (C/C++, embedded)</td></tr>
+        <tr><td><b>Elektronikai rendszerintegráció</b></td><td class="why">Áramkörök és rendszerek összehangolása</td><td class="rec"><span class="verdict v-good">Avionikára</span></td></tr>
+        <tr><td><b>Irányító és látórendszerek</b></td><td class="why">Szenzorika, képfeldolgozás, vezérlés</td><td class="rec"><span class="verdict v-good">Autó + repülés + űr</span> — ADAS, drón, műhold egyaránt</td></tr>
+        <tr><td><b>Vezetéknélküli kommunikáció</b></td><td class="why">Rádió, jelátvitel, hálózatok</td><td class="rec"><span class="verdict v-mid">Űrkommunikáció rokon</span></td></tr>
+        <tr><td><b>Mellékspec:</b> Alkalmazott szenzorika, Robotrendszerek, FPGA</td><td class="why">Kiegészítő irányok</td><td class="rec"><span class="verdict v-info">Bármelyik jól párosítható</span> az űr/repülés iránnyal</td></tr>
+        <tr><td>Intelligens hálózatok · Villamosenergia-rendszerek · Számítógép-alapú rendszerek</td><td class="why">Energetika, IT-infrastruktúra</td><td class="rec"><span class="verdict v-bad">Kevesebb repülés-relevancia</span></td></tr>
+      </table>
+      <div class="src">Forrás: <a href="https://felvi.bme.hu/szak/villamosmernok_msc">BME felvételi portál</a></div>
+    </div>
+  </div>
+
+  <!-- BME gépész -->
+  <div class="card" data-tags="szeles">
+    <div class="card-head">
+      <h3>BME Gépészmérnök MSc</h3>
+      <span class="verdict v-info">Széles alap</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact">Ponthatár legutóbb <b>75</b></span>
+        <span class="fact"><b>4 félév</b>, szeptemberi és februári indulás</span>
+      </div>
+      <p>Gépelemek, szilárdságtan, anyagtechnológia, áramlástan, hőerőgépek, irányítástechnika, CAD, végeselem. A felvételi oldal nem nevez meg hivatalos specializációkat — a kar kínálata széles. Ha a mechanika vonz, de nem akarsz még dönteni, ez a legbiztonságosabb „általános mérnök" diploma; a repüléshez a Gépészeti modellezés célzottabb.</p>
+      <div class="src">Forrás: <a href="https://felvi.bme.hu/szak/gepeszmernok_msc">BME felvételi portál</a></div>
+    </div>
+  </div>
+
+  <!-- DE járműmérnök -->
+  <div class="card" data-tags="debrecen auto">
+    <div class="card-head">
+      <h3>DE Járműmérnök MSc (Debrecen)</h3>
+      <span class="verdict v-mid">Csak autó/alternatív hajtás iránt</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact"><b>4 félév</b>, 120 kredit, 4 hét szakmai gyakorlat</span>
+        <span class="fact">Járműmérnök BSc = <b>teljes kreditértékkel</b> elfogadott</span>
+        <span class="fact">Ponthatár legutóbb <b>64</b> (2025)</span>
+      </div>
+      <p>A képzési cél említi a légi járműveket is, de a <b>jelenlegi egyetlen specializáció az Alternatív hajtású járműgyártás</b> — repülés-specifikus tartalom nincs. Ha Debrecenben maradnál és az autóipar (BMW, beszállítók) érdekel, jó választás; ha a repülés a cél, a BME-nek nincs alternatívája.</p>
+      <div class="src">Források: <a href="https://eng.unideb.hu/jarmumernoki-mesterkepzesi-szak">DE MK</a> · <a href="https://eng.unideb.hu/specializaciok">DE MK specializációk</a></div>
+    </div>
+  </div>
+
+  <!-- DE mechatronika -->
+  <div class="card" data-tags="debrecen szeles">
+    <div class="card-head">
+      <h3>DE Mechatronikai mérnök MSc (Debrecen)</h3>
+      <span class="verdict v-good">Debreceni best choice</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts"><span class="fact">Ponthatár legutóbb <b>82</b></span></div>
+      <p>Céges partnerekkel futó, gyakorlatorientált specializációk:</p>
+      <table class="spec-table">
+        <tr><th>Specializáció</th><th>Partner</th><th>Neked?</th></tr>
+        <tr><td><b>Kiberfizikai rendszerek</b></td><td class="why">—</td><td class="rec"><span class="verdict v-good">Leginkább irodai fejlesztői</span> — szimuláció, robotmodellezés, gyártásvirtualizálás</td></tr>
+        <tr><td><b>Járműmechatronikai szereléstechnológia</b></td><td class="why">Vitesco Technologies</td><td class="rec"><span class="verdict v-mid">Autóipari gyártás</span> — a partner helyi, a téma gyártásorientált</td></tr>
+        <tr><td><b>Elektronikai szereléstechnológia</b></td><td class="why">NI Hungary</td><td class="rec"><span class="verdict v-mid">Elektronikagyártás</span> — az űr/avionika irány felé is hasznos alapismeret</td></tr>
+        <tr><td><b>Épületmechatronikai és intelligens épületek</b></td><td class="why">—</td><td class="rec"><span class="verdict v-bad">Épületgépészet irány</span></td></tr>
+      </table>
+      <div class="src">Források: <a href="https://mechatronics.unideb.hu/mechatronikai-mernoki-mesterszak-spec">DE tanszék</a> · <a href="https://eng.unideb.hu/specializaciok">DE MK</a> · ponthatár: <a href="https://www.felvi.hu/bin/content/vonal24a/szer/szer_275.html">felvi.hu</a></div>
+    </div>
+  </div>
+
+  <!-- DE gépész + villamos -->
+  <div class="card" data-tags="debrecen">
+    <div class="card-head">
+      <h3>DE Gépész- és villamosmérnök MSc (Debrecen)</h3>
+      <span class="verdict v-info">Helyi opciók</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <div class="facts">
+        <span class="fact">Gépész MSc ponthatár legutóbb <b>64</b></span>
+        <span class="fact">Villamos MSc ponthatár legutóbb <b>80</b></span>
+      </div>
+      <table class="spec-table">
+        <tr><th>Szak</th><th>Specializációk</th><th>Neked?</th></tr>
+        <tr><td><b>Gépészmérnök</b></td><td class="why">Biomechanika · Műanyag fröccsöntő · Termeléstámogató</td><td class="rec"><span class="verdict v-mid">Gyártás/termelés iránt</span> — a Termeléstámogató a leginkább általános; járműmérnök BSc-vel kreditekkel számítható be</td></tr>
+        <tr><td><b>Villamosmérnök</b></td><td class="why">Ipari méréstechnika</td><td class="rec"><span class="verdict v-mid">Mérés/diagnosztika</span> — az űr/avionika irányhoz inkább a BME-s választék erősebb</td></tr>
+      </table>
+      <div class="src">Források: <a href="https://eng.unideb.hu/specializaciok">DE MK</a> · <a href="https://unideb.hu/felveteli-bemeneti-kovetelmenyek-debreceni-egyetem-mesterszakjaira-muszaki-kepzesi-terulet">DE bemeneti táblázat</a></div>
+    </div>
+  </div>
+
+  <!-- ME + SZE -->
+  <div class="card" data-tags="szeles auto">
+    <div class="card-head">
+      <h3>Miskolci Egyetem · CAD/CAM szakirány</h3>
+      <span class="verdict v-info">Közel hozzád</span>
+      <span class="exp">+</span>
+    </div>
+    <div class="card-body">
+      <p>A ME gépészmérnök MSc-jén <b>CAD/CAM szakirány</b> érhető el (tervezés + gyártás együtt) — hozzád földrajzilag a legközelebbi. Energetikai MSc-n épület- és erőműenergetika specializáció, mechatronika BSc-n ipari robotok fut. Ponthatár: gépész MSc <b>80</b> (levelező, 2026 — a nappali abban az évben nem indult).</p>
+      <p>A <b>Széchenyi Egyetem (Győr)</b> járműmérnök MSc-jét az Audi Hungaria Kar hirdeti; a célpontok Audi, Mercedes (Kecskemét), GM, Suzuki, Rába — autóipari irány, repülés-tartalom nélkül. Ponthatár legutóbb <b>76</b> (2025).</p>
+      <div class="src">Források: <a href="https://geik.uni-miskolc.hu/intezetek/SZM/spec">ME GEIK</a> · <a href="https://uni.sze.hu/kepzesek/j%C3%A1rm%C5%B1m%C3%A9rn%C3%B6ki-msc">SZE</a> · ponthatárok: <a href="https://www.felvi.hu/felveteli/ponthatarok">felvi.hu</a>, <a href="https://app.minap.hu/miskolc/2026/07/23/miskolci-egyetem-felveteli-ponthatarok-2026">ME 2026 (minap.hu)</a></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>Bemenet, röviden:</b> járműmérnök BSc-ddel a <b>BME járműmérnök</b> és <b>autonóm járműirányítási</b> MSc egyenes bemenet; a DE járműmérnök MSc teljes kreditértékkel; a többi (gépész, mechatronika, villamos, űr) kreditvizsgálatos. A BME űrmérnöknek nincs specializációja.
+  </div>
+</section>
+
+<!-- ================= MUNKAKÖRÖK ================= -->
+<section class="tab" id="munkakorok">
+  <h2>Munkakörök emberi nyelven</h2>
+  <p class="lede">Mit csinálsz nap mint nap, mennyire irodai, és pályakezdőként elérhető-e. Zsargon: <b>CAD</b> = 3D-s rajzolás · <b>CAE/FEA</b> = kiszámolni, hogy a terv kibírja-e · <b>CFD</b> = áramlásszámítás · <b>validáció</b> = bizonyítás, hogy működik · <b>embedded</b> = a gépben futó kód · <b>AOG</b> = a repülőgép földön ragadt · <b>CAMO</b> = a légitársaság karbantartás-tervező irodája.</p>
+
+  <div class="chips" id="mk-chips">
+    <button class="chip on" data-f="all">Mind</button>
+    <button class="chip" data-f="irodai">Teljesen irodai</button>
+    <button class="chip" data-f="belépő">Jó pályakezdő belépő</button>
+    <button class="chip" data-f="tervez">Tervezői út</button>
+    <button class="chip" data-f="ur">Űripari</button>
+  </div>
+
+  <div class="card" data-tags="irodai terv tervez">
+    <div class="card-head"><h3>CAD tervezőmérnök</h3><span class="verdict v-good">Teljesen irodai</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>3D-s modellezőben (CATIA, NX, SolidWorks) rajzolsz alkatrészeket, gyártási rajzokat és darabjegyzékeket készítesz, a koncepciótól a sorozatgyártásig kíséred a terméket, egyeztetsz a gyártással. Valós hirdetés: „célgépek gépészeti tervezése a koncepciótól a prototípuson át a sorozatgyártásig".</p>
+      <div class="src"><a href="https://www.profession.hu/allasok/1,0,0,tervez%C5%91m%C3%A9rn%C3%B6k">Profession.hu</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-tags="irodai terv tervez">
+    <div class="card-head"><h3>Szimulációs (CAE) mérnök</h3><span class="verdict v-good">Teljesen irodai</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Nem rajzolsz — számolsz. A tervező modelljét szimulációs szoftverbe töltöd: eltörik-e, meghajlik-e, hogyan folyik körülötte a levegő. Munka: modellfelépítés, futtatás, riportírás. Kevésebb állás, mint CAD-ből, de repülőgépiparban és űriparban egyaránt gerinc-szerep.</p>
+      <div class="src"><a href="https://uni-obuda.hu/wp-content/uploads/2021/11/szimulacios_mernok_erd.pdf">valós hirdetés (ÓE)</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-tags="belépő">
+    <div class="card-head"><h3>Minőségbiztosítási mérnök</h3><span class="verdict v-good">Nagyrészt irodai · jó belépő</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Eldöntöd, hogy egy hibás alkatrész elhagyhatja-e a gyárat; ha elromlik valami, gyökérokelemzést vezetsz („miért tört el?"). Sok dokumentáció — repülőgépiparban az EASA-szabályozás miatt különösen. KSH szerint a minőségbiztosítási rendszer kialakítása, működtetése, felügyelete.</p>
+      <div class="src"><a href="https://www.ksh.hu/docs/szolgaltatasok/hun/feor08/2/2137.html">KSH FEOR 2137</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-tags="belépő">
+    <div class="card-head"><h3>Teszt-/validációs mérnök</h3><span class="verdict v-mid">Vegyes (labor, próbapad)</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>A fejlesztők megterveztek valamit — a te dolgod bizonyítani, hogy működik: teszteseteket írsz, futtatsz, dokumentálsz. Valós hirdetés (AVL, Érd): „járműtesztek és validációs ciklusok előkészítése, koordinálása, végrehajtása". Jó belépő, mert megismered a teljes terméket.</p>
+      <div class="src"><a href="https://www.profession.hu/allas/jarmuteszt-technikus-avl-erd-3039569">AVL hirdetés</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-tags="irodai">
+    <div class="card-head"><h3>Rendszermérnök</h3><span class="verdict v-mid">Inkább MSc/gyakorlat után</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Nem egy alkatrészt, hanem az egészet látod: a CAD-mérnök, hajtásmérnök és programozó munkáját hangolod össze, követelményeket és interfészeket definiálsz. Az űriparban (műholdak) az egyik legkeresettebb szerep.</p>
+    </div>
+  </div>
+
+  <div class="card" data-tags="irodai terv">
+    <div class="card-head"><h3>Beágyazott szoftvermérnök</h3><span class="verdict v-good">Teljesen irodai · jól fizet</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Nem weboldalt írsz, hanem a „vasban" futó kódot — ami kiolvassa a szenzort és vezérli a motort. Kell hozzá C/C++, ami BSc-mérnökként magadtól tanulandó. A magyar űripar pontosan ezt kéri (lásd Űripar fül).</p>
+      <div class="src"><a href="https://c3s.hu/positions-beagyazott-sw-fejlesztomernok/">C3S hirdetés</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-tags="irodai belépő">
+    <div class="card-head"><h3>Légitársasági CAMO-szerepek (Wizz)</h3><span class="verdict v-good">Tisztán irodai · diplomásként is</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p><b>Short Term Planner</b> — ezzel indul a diplomás: digitálisan tervezed, melyik gép mikor esik át karbantartáson úgy, hogy a menetrend ne álljon le. <b>MOC Engineer</b> (~5 év) — amikor egy gép AOG, irodából keresed a megoldást a pilótákkal és a gyártóval. <b>Airworthiness Engineer</b> — hatósági tanúsítványok kezelése. A szerelői út (Cat A/B, műszakok) a másik világ — azt nem akarod.</p>
+      <div class="src"><a href="https://careers.wizzair.com/go/Engineer-Pathway-Program/9374101/">Wizz Air Engineer Pathway</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-tags="irodai belépő">
+    <div class="card-head"><h3>Beszerzési mérnök</h3><span class="verdict v-good">Teljesen irodai</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>A tervezők és a piac közötti híd: „2 mm vastag, hőálló lemez kell 1000 darabban határidőre — ki tudja adni?" Beszállítókat keresel és értékelsz mérnöki szempontból. Kevésbé mélyműszaki, sok nyelvhasználat.</p>
+    </div>
+  </div>
+
+  <div class="card" data-tags="irodai">
+    <div class="card-head"><h3>Műszaki projektmenedzser</h3><span class="verdict v-mid">Inkább tapasztalat után</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Nem tervezel — azt csinálod, hogy a sok mérnök munkája időben és pénzben kiálljon: értekezletek, ütemtervek, kockázati listák. Sokan erre lyukadnak ki 5–10 év mérnöki munka után.</p>
+    </div>
+  </div>
+
+  <div class="card" data-tags="belépő">
+    <div class="card-head"><h3>Folyamat-/gyártásfejlesztő mérnök</h3><span class="verdict v-mid">Vegyes — gyártóterem is</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Nem a terméket tervezed, hanem a gyártást: keresed, melyik gép okozza a hibát, tervezed a hatékonyabb termelést. Valós hirdetés (Bosch, Miskolc): „gyártási folyamatok fejlesztése, optimalizálása". Tömegesen keresett, de nem tiszta irodai.</p>
+      <div class="src"><a href="https://www.profession.hu/allas/folyamatfejleszto-mernok-process-development-engineer-bosch-group-3049310/optimum">Bosch hirdetés</a></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:24px">Űripari munkakörök</h3>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:6px">A magyar űripar néhány tucat cégénél (Remred/4iG Martonvásár, C3S Budapest, Admatis Miskolc) ezek a mérnöki szerepek ténylegesen léteznek — hirdetésekből összegezve.</p>
+
+  <div class="card" data-tags="ur irodai">
+    <div class="card-head"><h3>Beágyazott szoftvermérnök (űr)</h3><span class="verdict v-good">Teljesen irodai · a piac legkeresettebbje</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>A műhold fedélzeti számítógépébe és érzékelőibe futó kódot írod: C/C++ és beágyazott Linux — nem webfejlesztés, hanem a „vasban" futó szoftver. Kritikus: a műholdat azóta sem lehet megjavítani, ha elromlik — ezért a kód megbízhatósága szigorú szabványok (pl. ECSS) szerint készül. Valós magyar hirdetés (C3S, Budapest): „BSc VAGY MSc bármilyen beágyazott rendszerekhez kapcsolódó mérnöki területről" — vagyis nem űrmérnök diploma kell, hanem a készség. <b>Átjárhatóság:</b> teljes — ugyanez a szerep az autóiparban (BMW, Bosch) és minden elektronikát gyártó cégnél létezik.</p>
+      <div class="src"><a href="https://c3s.hu/positions-beagyazott-sw-fejlesztomernok/">C3S hirdetés</a></div>
+    </div>
+  </div>
+
+  <div class="card" data-tags="ur irodai terv">
+    <div class="card-head"><h3>Űrszerkezet-tervező mérnök (CAD)</h3><span class="verdict v-good">Tisztán irodai tervezés</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Műhold-alkatrészek (vázszerkezetek, napelemtáblák rögzítések, antennatartók) 3D-tervezése — ugyanaz a CAD-munka, mint az autóiparban, csak extrém követelményekkel: minden gramm számít (hordozórakéta-korlát), az anyagnak ki kell bírnia a fellövés rázkódását és a vákuumot, és a hőtágulás-összezsugorodás is számításra szorul. Ilyen szerepek a Remred/4iG (Martonvásár) és az Admatis (Miskolc) világában léteznek. <b>Átjárhatóság:</b> teljes — a CAD-mérnök szerepe iparfüggetlen, csak a szabályok mások; gépész/jármű MSc-vel ez a legtermészetesebb belépő, űrmérnök MSc-vel ritkább profil.</p>
+    </div>
+  </div>
+
+  <div class="card" data-tags="ur belépő">
+    <div class="card-head"><h3>AIT- és tesztmérnök (űr)</h3><span class="verdict v-mid">Vegyes — tiszta és üzem is</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>AIT = Assembly, Integration, Test — a műhold összeszerelése, alrendszerek integrálása és tesztje. A tervezőktől megkapott alkatrészeket a Martonvásári REMTECH-féle központokban összeépítitek, majd szimulált űrkörülmények között (hőváltó kamrák, rázkódóasztal) bizonyítjátok, hogy a Hold körüli pályán is működni fog. A tesztek nagy része irodai tervezésű és dokumentált, de a szerelési fázis fizikai munkával jár. <b>Átjárhatóság:</b> jó — az autóipari teszt-/validációs mérnök szerepe ugyanez, csak szobahőmérsékleten.</p>
+    </div>
+  </div>
+
+  <div class="card" data-tags="ur irodai">
+    <div class="card-head"><h3>Űripari minőségbiztosítási mérnök</h3><span class="verdict v-good">Teljesen irodai</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p>Az űripar a világ legszigorúbb minőségbiztosítási szabványrendszere (ECSS) — minden alkatrész „űrképesítésének" bizonyítékláncát dokumentálni kell. A QA-mérnök nem tervez, hanem biztosítja, hogy minden a szabványnak megfelelően készüljön: folyamatok felügyelete, hibák kivizsgálása, tanúsítványok kezelése. A repülőgépipari minőségbiztosításhoz nagyon hasonló — átjárható tudás. <b>Átjárhatóság:</b> részleges — a szerep minden iparágban ugyanaz, de a szabványrendszer más (autóipar: IATF 16949, légiipar: EASA); a váltás tanulást igényel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CÉGEK ================= -->
+<section class="tab" id="cegek">
+  <h2>Munkáltatók és céges programok</h2>
+  <p class="lede">Kik foglalkoznak itthon repüléssel/űrrel/autóval, és milyen belépő programok léteznek — az MSc-követelménnyel.</p>
+
+  <h3 style="margin-top:10px">Repülőgép- és űripar</h3>
+  <table class="tbl">
+    <tr><th>Munkáltató</th><th>Hol</th><th>Mit csinál · mit kínál neked</th></tr>
+    <tr><td><b>Airbus Helicopters Hungary</b></td><td>Gyula (~1,5–2 óra Debrecenből)</td><td>2022 óta helikopter-dinamikus rendszerek alkatrészeinek gyártása az összes Airbus-terméknek · <b>Design Office (tervezőiroda) működik Gyulán</b> · ~<b>177 alkalmazott</b> · folyamatosan keresnek mérnököket és mérnök-gyakornokokat</td></tr>
+    <tr><td><b>Wizz Air</b></td><td>Budapest</td><td>Engine Pathway: diplomásként CAMO-mérnöki pálya (Short Term Planner → MOC Engineer) — tisztán irodai</td></tr>
+    <tr><td><b>Aeroplex</b></td><td>Budapest</td><td>Repülőgép-karbantartás (MRO) — irodai támogató szerepek vannak, de a mag szerelői munka</td></tr>
+    <tr><td><b>4iG / Remred</b></td><td>Martonvásár</td><td>REMTECH űrközpont: <b>4000 m²-es</b> műholdgyártó-összeszerelő-tesztkomplexum, átadása <b>2026 második felében</b>, utána sorozatgyártás — lásd Űripar fül</td></tr>
+    <tr><td><b>C3S</b></td><td>Budapest IX.</td><td>Kis műholdas technológiák tervezése-gyártása; beágyazott szoftvermérnököket keres (BSc/MSc, C/C++, embedded Linux, home office)</td></tr>
+    <tr><td><b>Admatis</b></td><td>Miskolc</td><td>Műhold alkatrészek tervezése-gyártása-tesztelése; <b>gyakornoki helyeket hirdet</b> — hozzád a legközelebbi űripari cég</td></tr>
+  </table>
+
+  <h3>Autóipar és gyártóipar (tartalék piac)</h3>
+  <table class="tbl">
+    <tr><th>Munkáltató</th><th>Hol</th><th>Mit kínál</th></tr>
+    <tr><td><b>BMW Gyár</b></td><td><b>Debrecen</b></td><td>Neue Klasse modellek gyártása; hallgatói gyakornoki program (heti 20 óra) + AcceleratiON trainee végzetteknek</td></tr>
+    <tr><td><b>Bosch</b></td><td>Miskolc + több helyszín</td><td>Gyakornoki program, Junior Managers Program, BEST ösztöndíj</td></tr>
+    <tr><td><b>Mercedes-Benz</b></td><td>Kecskemét</td><td>Gyakornoki helyek mérnöki területekre (pl. e-jármű, nagyfeszültségű rendszerek)</td></tr>
+    <tr><td><b>Audi Hungaria</b></td><td>Győr</td><td>Gyakornoki program + duális felsőfokú képzés</td></tr>
+  </table>
+
+  <h3 style="margin-top:26px">Céges belépő programok</h3>
+  <div class="callout">A trainee programok részletes bemutatása — mit ad, kinek, milyen feltételekkel — <b>külön menüpontban</b> található (Trainee fül).</div>
+</section>
+
+<!-- ================= TRAINEE ================= -->
+<section class="tab" id="trainee">
+  <h2>Trainee és belépő programok</h2>
+  <p class="lede">Céges struktúrált programok friss diplomásoknak — mit ad mindegyik, kinek való, és kell-e hozzá az MSc. Közös bennük: nem kérnek szakmai tapasztalatot, csak diplomát (vagy azt sem), angolt, és nyitottságot a vállalati rotációra.</p>
+
+  <div class="callout"><b>Kell hozzájuk az MSc?</b> Nem — egyik program sem kéri belépési feltételként. Az MSc viszont nem is felesleges: a BMW-féle elit programoknál előnyben tartott, a fejlesztői (CAD/CAE, rendszermérnöki) karrierúton gyorsít, és a fizetési plafont emeli. A gyakornoki tapasztalat viszont szinte mindegyiknél kell — azt az egyetem alatt kell megszerezni.</div>
+
+  <div class="card open">
+    <div class="card-head"><h3>BMW AcceleratiON · Debrecen</h3><span class="verdict v-good">A legjobban hozzád illő</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <div class="facts"><span class="fact">Szint: <b>Graduate program</b> friss diplomásoknak</span><span class="fact">Helyszín: <b>Debrecen</b> + külföld</span><span class="fact">Indulás: <b>április / október</b></span></div>
+      <p><b>Mit ad:</b> több hónapos strukturált fejlesztő program a BMW Gyár Debrecenben, <b>határozatlan idejű szerződés az első naptól</b> — vagyis nem „gyakornoki bérezéssel" fut, hanem normális állásból indul. <b>4 rotáció</b>: két műszak/terület itthon a gyárban, kettő külföldön más BMW-telephelyen — így a program végére látod, hogyan épül fel egy nemzetközi autógyártás. Dedikált mentor és trainee-közösség is tartozik hozzá.</p>
+      <p><b>Feltételek:</b> friss diploma (BSc elég, <b>MSc előnyben</b>), minimum <b>6 hónap gyakornoki tapasztalat</b> (a cég bármely területén vagy más iparágban), jó tanulmányi átlag, folyékony angol. Vezetőségi interjúk és felvételi folyamat tartozik hozzá.</p>
+      <p><b>Miért jó neked:</b> Debrecenben van (nem kell költözni), autóipari mérnöki tartalom, és a rotációk miatt széles ipari rálátás — később bárhova (akár repülés/űr irányba is) jól eladható tapasztalat. A cég egyben az egyetem melletti legnagyobb gyakornok-munkáltató is (hallgatói program, heti 20 óra).</p>
+      <div class="src">Forrás: <a href="https://www.bmwgroup.jobs/hu/en/opportunities/graduate/trainee-programme.html">BMW Trainee Programme</a> · <a href="https://www.bmwgroup.jobs/hu/hu/opportunities/students.html">BMW hallgatói program</a></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Wizz Air Engineer Pathway · Budapest</h3><span class="verdict v-good">Repülés + tisztán irodai</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <div class="facts"><span class="fact"><b>BSc elég</b></span><span class="fact">Szint: CAMO-mérnöki karrierút</span><span class="fact">Helyszín: Budapest</span></div>
+      <p><b>Mit ad:</b> a légitársaság műszaki (MRO) világába vezető strukturált útvonal, ami <b>nem szerelői munka</b>, hanem teljesen irodai. A pálya: <b>Short Term Planner</b> (digitális ütemtervezés: melyik gép mikor esik át karbantartáson) → kb. 3 év alatt <b>MOC TSE</b> (a karbantartási koordináció és hibákkal kapcsolatos mérnöki támogatás) → kb. 5 év alatt <b>MOC Engineer</b> (amikor egy gép földön ragad, irodából keresed a megoldást a pilótákkal, beszállítókkal) → kb. 7 év alatt <b>MOC Manager</b>. Közben légiipari jogosítványok (EASA Part-66) szerezhetők, amelyeket a cég támogat.</p>
+      <p><b>Feltételek:</b> friss vagy hamarosan szerzett <b>gépész/jármű/villamos BSc</b> (MSc nem kell), angol, analitikus gondolkodás. Éjszakai/hétvégi ügyeleti időszakok előfordulhatnak a tervezésben.</p>
+      <p><b>Miért jó neked:</b> ez az egyik legegyszerűbb „belépő ajtó" a magyar légiiparba — a járműmérnök BSc-dök pontosan illeszkednek, és a karrierút előre meg van írva, nem kell találgatni, „mi lesz belőlem 5 év múlva".</p>
+      <div class="src">Forrás: <a href="https://careers.wizzair.com/go/Engineer-Pathway-Program/9374101/">Wizz Air Engineer Pathway</a></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Wizz Air Management Trainee · Budapest</h3><span class="verdict v-info">Már az egyetem alatt</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <div class="facts"><span class="fact">Hallgatóknak — <b>diploma nem kell</b></span><span class="fact">Heti <b>20 óra</b>, Budapest</span></div>
+      <p><b>Mit ad:</b> egy éves strukturált hallgatói program: először egy „home" osztály (akár műszaki/Continuing Airworthiness is), utána rotációk más területekre. Bérezett munka az egyetem mellett, és belülről látod, hogyan működik egy légitársaság.</p>
+      <p><b>Miért jó neked:</b> ezt már <b>a BSc alatt</b> lehet csinálni — a legjobb „előpróbája" annak, hogy tetszik-e a légis maga. Ha bejön, az Engineer Pathway-re belülről való átjárás is sokkal könnyebb.</p>
+      <div class="src">Forrás: <a href="https://careers.wizzair.com/go/Management-Trainee/5258901/">Wizz Air Management Trainee</a></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Bosch · Miskolc + országosan</h3><span class="verdict v-good">Hozzád a legközelelebbi</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <div class="facts"><span class="fact"><b>BSc elég</b></span><span class="fact">Gyakornoki program + Junior Managers Program + BEST ösztöndíj</span></div>
+      <p><b>Mit ad:</b> a Bosch Magyarországon három szinten van jelen: (1) <b>gyakornoki program</b> — hallgatóknak, akár Miskolcon, gyártástechnológiai/fejlesztői területeken; (2) <b>Junior Managers Program</b> — végzett mérnököknek szánt, több rotációs trainee program; (3) <b>BEST ösztöndíj</b> — anyagi támogatás + szakmai program kiváló hallgatóknak, ami később előnyt jelent a felvételnél.</p>
+      <p><b>Miért jó neked:</b> Miskolci lakhellyel ez a <b>legpraktikusabb belépő</b> az iparba — a gyakornokság BSc alatt elérhető, és a Bosch-nál a járműelektronika/gyártástechnológia tartalma később autó- és repülőipari helyekre is eladható.</p>
+      <div class="src">Forrás: <a href="https://www.bosch.hu/karrier/tanulok-palyakezdok/">Bosch Hungary</a></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Airbus Global Graduate Programme · Gyula</h3><span class="verdict v-mid">Repülés — de versenyképes</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p><b>Mit ad:</b> az Airbus nemzetközi, strukturált graduate programja — több országbeli rotációval, nyelvfejlesztéssel és mentorálással. A gyulai üzem a helikopter-dinamikus rendszerek alkatrészeit gyártja az összes Airbus-helikopternek, és ott működik a <b>Design Office (tervezőiroda)</b> is.</p>
+      <p><b>Feltételek:</b> felsőfokú műszaki diploma (jellemzően gépész/jármű/mechatronika), angol, mobilitás. A GGP mellett a gyulai gyár <b>folyamatosan hirdet mérnöki pozíciókat és mérnökgyakornoki helyeket</b> is — azok egyszerűbb belépők, ha a GGP nem jön össze.</p>
+      <p><b>Miért jó neked:</b> ez a magyar repülőgépipar legközvetlenebb kapuja — a járműmérnök BSc + BME repülőmérnöki MSc kombó pontosan erre a profilra készül.</p>
+      <div class="src">Források: <a href="https://www.airbus.com/en/careers/life-at-airbus/working-here/working-at-airbus-in-hungary">Airbus Hungary</a> · <a href="https://hu.indeed.com/q-airbus-%C3%A1ll%C3%A1sok.html">Airbus állások (Indeed)</a></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Mercedes-Benz · Kecskemét</h3><span class="verdict v-info">Gyakornoki szint</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p><b>Mit ad:</b> a kecskeméti gyár gyakornoki programja mérnöki területekre (pl. e-járműtechnológia, nagyfeszültségű rendszerek, minőségbiztosítás). A gyakornoki helyek elvileg belépési kapuként működnek a végzett mérnöki pozíciók felé a gyáron belül.</p>
+      <p><b>Miért jó neked:</b> ha az autóipar tartalék-terve — a gyakornokság alatt jól megismerhető a gyártási világ, és a BMW-nél is eladható tapasztalat.</p>
+      <div class="src">Forrás: <a href="https://gyar.mercedes-benz.hu/karrier/gyakornoki-program">Mercedes-Benz Gyár Kecskemét</a></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>Audi Hungaria · Győr</h3><span class="verdict v-info">Duális képzés</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <p><b>Mit ad:</b> gyakornoki program hallgatóknak, és <b>duális felsőfokú képzés</b> — ahol az egyetem mellett a gyárban tanulsz fizetésért. Az Audi a SZE Audi Hungaria Járműmérnöki Karának fő partnere.</p>
+      <p><b>Miért jó neked:</b> ha a Győr (SZE) útvonalat választanád, a duális forma a legbiztosabb elhelyezkedést jelenti — a gyár gyakorlatilag a saját hallgatóit veszi fel.</p>
+      <div class="src">Forrás: <a href="https://audi.hu/hu/karrier/hallgatoknak-diakoknak/">Audi Hungaria</a></div>
+    </div>
+  </div>
+
+  <div class="callout"><b>Összesítés — mit válassz?</b> Ha a repülés a fő cél: <b>Wizz Engineer Pathway</b> (irodai, BSc-vel) vagy <b>Airbus Gyula</b> (a repülőmérnöki MSc-vel erősebb). Ha Debrecenben akarsz maradni: <b>BMW AcceleratiON</b> a csúcs-program, alatta a BMW hallgatói gyakornokság. Ha Miskolcból indulnál: <b>Bosch gyakornokság</b> már most, BSc alatt. Mindegyikhez az MSc opcionális — de a legjobb kombináció: gyakornokság BSc alatt + MSc mellette vagy utána.</div>
+</section>
+
+<!-- ================= SZÁMOK ================= -->
+<section class="tab" id="szamok">
+  <h2>Bérek és elhelyezkedési esélyek</h2>
+  <p class="lede">Hivatalos statisztikák: Diplomás Pályakövetési Rendszer (DPR) és Hays bérútmutató 2025.</p>
+
+  <div class="callout"><b>Fontos — mit mérnek ezek a számok?</b> A DPR-ábrák <b>nem kezdőbérek</b>: a 2022/23-ban végzett évfolyam bruttó havi átlagjövedelmét mutatják <b>2024 decemberben</b>, tehát átlagosan 1–1,5 évvel a diploma után (NAV-adatokból, csak olyan szakokkal, ahol legalább 10-en végeztek). A reális <b>kezdőbér</b> alacsonyabb: a Hays szerint pályakezdő mérnökként 500–710 ezer Ft bruttó a tipikus sáv, és ehhez jönnek hozzá az évenkénti emelések — ezért van az, hogy a DPR-átlag a kezdőbér fölé nő. A nettó kb. a bruttó 66%-a.</div>
+
+  <h3>Milyen gyorsan találsz munkát? (MSc, képzési terület szerint)</h3>
+  <div class="bar-row"><div class="lbl">Orvos-egészségtud.</div><div class="bar"><span class="fill f-fast" style="width:17%"></span></div><div class="val">15 nap</div></div>
+  <div class="bar-row"><div class="lbl">Informatika</div><div class="bar"><span class="fill f-fast" style="width:20%"></span></div><div class="val">~17 nap</div></div>
+  <div class="bar-row"><div class="lbl">Gazdaságtudomány</div><div class="bar"><span class="fill f-fast" style="width:27%"></span></div><div class="val">~23 nap</div></div>
+  <div class="bar-row"><div class="lbl"><b style="color:var(--text)">Műszaki</b></div><div class="bar"><span class="fill f-mid" style="width:32%"></span></div><div class="val"><b>~26 nap</b></div></div>
+  <div class="bar-row"><div class="lbl">Természettudomány</div><div class="bar"><span class="fill f-slow" style="width:60%"></span></div><div class="val">~50 nap</div></div>
+  <div class="bar-row"><div class="lbl">Jog (osztatlan)</div><div class="bar"><span class="fill f-slow" style="width:100%"></span></div><div class="val">~82 nap</div></div>
+  <p style="font-size:14px;color:var(--muted);margin-top:10px">Egy évvel a diploma után a műszaki végzettek 74%-a foglalkoztatott. BSc-szinten a műszakiak átlagosan 1,31–1,45 hónap alatt jutnak első munkához; országosan a frissdiplomások 89%-a dolgozik.</p>
+
+  <h3 style="margin-top:28px">Friss BSc-diplomások keresete (DPR 2025 — a 2022/23-as évfolyam 2024 decemberi, bruttó havi átlagjövedelme)</h3>
+  <table class="tbl">
+    <tr><th>Alapszak</th><th>Bruttó átlag</th><th>Megjegyzés</th></tr>
+    <tr><td><b>Járműmérnök</b></td><td class="num hi">842 995 Ft</td><td class="num">az ország 4. legjobban fizető alapszakja ebben a mérésben · nettó kb. 560 ezer</td></tr>
+    <tr><td>Villamosmérnök</td><td class="num">808 655 Ft</td><td class="num">nettó kb. 540 ezer</td></tr>
+    <tr><td>Mérnökinformatikus</td><td class="num">786 843 Ft</td><td class="num">nettó kb. 520 ezer</td></tr>
+    <tr><td>Gépészmérnök</td><td class="num">743 426 Ft</td><td class="num">nettó kb. 490 ezer</td></tr>
+  </table>
+  <p style="font-size:14px;color:var(--muted)">Ugyanezen a módszertanon a friss járműmérnök <b>MSc-sek</b> átlagosan <b style="color:var(--text)">~957 000 Ft</b> bruttóval álltak — de ez is a diploma utáni első ~1,5 év átlaga, nem az első fizetés. Összképben: a kezdőbér (Hays: 500–710 ezer) és a 3 éves tapasztalatú mérnök bérére (600–900 ezer) is érdemes számítani — a DPR-átlagok a kettő közé esnek.</p>
+
+  <h3 style="margin-top:28px">Mérnöki fizetékek szintenként (Hays 2025, bruttó/hó)</h3>
+  <table class="tbl">
+    <tr><th>Szint</th><th>Pozíció</th><th>Havi bruttó</th></tr>
+    <tr><td>Pályakezdő</td><td>Mérnöki pozíciók összessége</td><td class="num">500 000 – 710 000 Ft</td></tr>
+    <tr><td>Pályakezdő</td><td>Automatizálási mérnök (csúcs)</td><td class="num">710 000 Ft</td></tr>
+    <tr><td>Junior (1–3 év)</td><td>Mérnöki pozíciók</td><td class="num">600 000 – 900 000 Ft</td></tr>
+    <tr><td>Medior (3–5 év)</td><td>Mérnöki pozíciók többsége</td><td class="num">~1 000 000 Ft medián</td></tr>
+    <tr><td>Medior</td><td>Automatizálási mérnök</td><td class="num">1 200 000 Ft (max 1 400 000)</td></tr>
+    <tr><td>Senior (5+ év)</td><td>Sok mérnöki pozíció</td><td class="num">1 100 000 – 1 600 000 Ft</td></tr>
+  </table>
+
+  <div class="callout"><b>Szakma–munkakör összhang:</b> a friss diplomások 77%-ánál illeszkedik a végzettség és a foglalkozás; a mérnökök ritkán váltanak pályát, mert munkaköreik nehezen helyettesíthetők — ez biztonság. DE-s műszaki végzettséggel az elhelyezkedési mutatók átlagosak, a keresetek elmaradnak a budapestiektől (regionális hatás) — ezért érdemes a karrier elején mozgékonyknak lenni.</div>
+
+  <div class="src">Források: <a href="https://eduline.hu/palyakezdes/20260121_palyakezdes-mesterdiplomas-allasok-kepzesi-teruletek-DPR">Eduline – mesterdiplomás elhelyezkedés</a> · <a href="https://eduline.hu/palyakezdes/20261014_legjobban-fizeto-diplomak-dpr-2025">Eduline – DPR 2025</a> · <a href="https://eduline.hu/palyakezdes/20250124_Ezek-a-legjobban-fizeto-muszaki-diplomak-2025ben">Eduline – műszaki diplomák</a> · <a href="https://www.hrportal.hu/hr/mennyit-keresnek-a-mernokok-itt-vannak-a-friss-szamok-a-gyartasbol-20250426.html">HRportal – Hays</a> · <a href="https://eduline.hu/palyakezdes/20250929_friss_diploma_palyakezdes_munkakereses_elhelyezkedesi_ido_DPR">Eduline – álláskeresési idők</a> · <a href="https://www.felvi.hu/pub_bin/dload/felsooktatasimuhely/DPR/dpr_vegzetti_jelentes_2023.pdf">DPR 2023</a> · <a href="https://dea.lib.unideb.hu/server/api/core/bitstreams/f0460c76-2a42-4a80-8cec-66e97c4b7275/content">DE – munkaerőpiaci elemzés</a></div>
+</section>
+
+<!-- ================= ŰRIPAR ================= -->
+<section class="tab" id="ur">
+  <h2>Az űripar és az űrmérnök MSc</h2>
+  <p class="lede">A döntéshez szükséges összes szám egy helyen — az őszinte ítélettel.</p>
+
+  <div class="stats" style="margin-top:10px">
+    <div class="stat"><b>26 + 8 fő</b><span>Az első évfolyam: ennyien kezdtek (2022 ősze + 2023 tavasza), 19-en végeztek 2024-ben — és 2024 őszén már 29-en indultak. Összesen ~60-an az első két évben</span><div class="src">Haditechnika (Bacsárdi) · BME · VIK</div></div>
+    <div class="stat"><b>~100 jelentkező</b><span>Évente ennyien jelentkeznek az űrmérnök MSc-re — sokan munka mellett, akár 40 fölött is; blokkos órarenddel</span><div class="src">BME</div></div>
+    <div class="stat"><b>3×</b><span>Ennyire nőhet <b>2030-ig</b> az űriparból élő cégek száma (most ~40 cég)</span><div class="src">Innotéka</div></div>
+    <div class="stat"><b>4000 m²</b><span>A martonvásári REMTECH műholdgyártó-tesztközpont mérete — átadás 2026 második felében</span><div class="src">4iG</div></div>
+    <div class="stat"><b>96 Mrd Ft</b><span>Újabb 4iG-beruházás az űr- és védelmi iparba</span><div class="src">HVG360</div></div>
+    <div class="stat"><b>48 cég</b><span>A HUNSPACE klaszter tagjainak száma (60+ szervezet a teljes listán)</span><div class="src">HVG360 · BME</div></div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="card-head"><h3>A piac valósága</h3><span class="exp">+</span></div>
+    <div class="card-body">
+      <ul>
+        <li><b>Pénz van a rendszerben:</b> a kormány ~30 milliárd forintos űripari programot fogadott el 12 eszközfejlesztéssel; a 4iG–Remred a legnagyobb magánmotor (REMTECH, Hugeo geostacionárius műhold, Huleo 8 műholdas konstelláció, MoonRad Hold-misszió — ESA-választás).</li>
+        <li><b>De kicsi:</b> a Remred egész éves árbevétele 1,3 milliárd forint volt, ebből kevesebb mint 4% export — még kicsi cég.</li>
+        <li><b>Sérülhető:</b> az ESA-keretek nem csak nőnek — a Prodex tudományos programot 10-ről 3 millió euróra vágták; a szektor az állami/ESA-pénztől függ.</li>
+        <li><b>Az űrmérnök MSc-t sehol sem követelik:</b> a C3S valódi hirdetése „BSc VAGY MSc bármilyen beágyazott rendszerekhez kapcsolódó mérnöki területről" kér — C/C++, beágyazott Linux, angol. A piac <b>készség szerint</b> vesz, nem szaknév szerint.</li>
+      </ul>
+      <div class="src">Források: <a href="https://www.bme.hu/hirek/241030/bme-msc-mesterkepzes-urmernok-szak-bacsardi-laszlo">BME</a> · <a href="https://real.mtak.hu/198827/1/07_Csurgai-Horvath_Bacsardi.pdf">Haditechnika tanulmány (évfolyamlétszámok)</a> · <a href="https://vik.bme.hu/hir/2997-urtechnologai-szakember-szakiranyu-tovabbkepzes-indul">BME VIK (29 felvett)</a> · <a href="https://c3s.hu/positions-beagyazott-sw-fejlesztomernok/">C3S</a> · <a href="https://hvg.hu/360/20260716_uripar-4ig-hunspace-tisza-urkutatas-esa">HVG360</a> · <a href="https://www.4ig.hu/kuszobon-a-magyar-uripari-kozpont-elinditasa">4iG</a> · <a href="https://www.innoteka.hu/cikk/europa_uj_urkutatasi_korszakba_lepett.2428.html">Innotéka</a> · <a href="https://telex.hu/techtud/2025/06/09/hunor-urhajos-program-magyar-urkutatas-urutazas-muhold-4ig">Telex</a></div>
+    </div>
+  </div>
+
+  <div class="callout good"><b>VAN értelme, ha:</b> a műhold <b>biztos</b> cél (nem hangzás) · elfogadod, hogy a piac kicsi (pár tucat cég: Budapest, Martonvásár, Miskolc) · megtanulod magadtól a C/C++-t és Linuxot, mert a hirdetések azt kérik.</div>
+
+  <h3 style="margin-top:30px">Az űrmérnök MSc előnyei és hátrányai</h3>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:10px">A BME és az ipari források alapján, a te helyzetedben (járműmérnök BSc, repülés/űr cél, irodai munka).</p>
+  <div class="card open">
+    <div class="card-head"><h3>Előnyök</h3><span class="verdict v-good">Ami mellette szól</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <ul>
+        <li><b>Egyedülálló itthon, kivételes a régióban</b> — a BME szerint az egész régióban nincs hasonló képzés; olyan tudást ad (űrrendszerek, ECSS-szabványok, űrkommunikáció, rakétatechnika), amivel „nagyon kevés mérnök rendelkezik Magyarországon és világszerte".</li>
+        <li><b>Kis évfolyamok, erős kötődés az iparhoz</b> — ~60 fő az első két évben, blokkos órarend, és a jelentkezők jelentős része már dolgozik (akár 40 fölöttie is): az órákon gyakorlati mérnökök ülnek melletted, az oktatók pedig személyesen ismerik a piacot.</li>
+        <li><b>Nincs túlkínálat</b> — 19 végzettel az első évfolyamból a magyar űripar (pár tucat cég, ráadásul 2030-ig növekvő) nem lesz elárasztva végzett űrmérnökökkel.</li>
+        <li><b>Műhold + rakéta + szabványok egyben</b> — a szakfelelős szerint a végzettek „a platform és a payload fejlesztését is tudják", ami pontosan a magyar cégek (Remred, C3S, Admatis) hiánypótló profilja.</li>
+        <li><b>Nyitott a PhD-út</b> — a diploma egyetemi doktori képzésre is feljogosít, ha a kutatói irány vonzna.</li>
+        <li><b>Pénz van a rendszerben</b> — ~30 Mrd Ft állami program, ESA-keretek, 96 Mrd Ft-os 4iG-beruházás: ha a piac a tervek szerint nő, az első évfolyamok végzettjei a „szenior" generációvá válhatnak.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card open">
+    <div class="card-head"><h3>Hátrányok</h3><span class="verdict v-bad">Ami ellene szól</span><span class="exp">+</span></div>
+    <div class="card-body">
+      <ul>
+        <li><b>A piac ma még kicsi</b> — ~40 cég él elsősorban űrtevékenységből, többsége kisvállalat; a pozíciók Budapesten, Martonvásáron és Miskolcon koncentrálódnak. Egy rossz évben kevés a nyitott hely.</li>
+        <li><b>Állami/ESA-pénzfüggő</b> — a Prodex tudományos program keretét 10-ről 3 millió euróra vágták: ha a politikai/ESA-prioritások változnak, a piac összehúzódhat.</li>
+        <li><b>Nem a diploma a kulcs, hanem a készség</b> — a valódi hirdetések „BSc VAGY MSc bármilyen beágyazott területről" + C/C++ + Linux + angol követelményt adnak. Az űrmérnök MSc önmagában nem garancia a felvételre.</li>
+        <li><b>Villamos beállítottság</b> — a szak a VIK (villamos kar) alatt fut: elektronika-szoftver hangsúly. A tiszta gépészeti CAD/szerkezettervező pályán a gépész/jármű MSc-sek természetesebb illeszkedést jelentenek.</li>
+        <li><b>Kis alumni-hálózat</b> — 2024 óta csak néhány évfolyam végzett; nincs még kiforrott „végzett generáció", aki húzna be.</li>
+        <li><b>Ponthatár 70 + kreditvizsgálat</b> — nem villamos/mechatronika BSc-ből (pl. a járműmérnökéből) a felvétel kreditvizsgálathoz kötött, tehát a belépés nem automatikus.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:30px">Ha elvégzed: miben tudsz elhelyezkedni?</h3>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:10px">Az űripari pozíciók nagy része <b>átfedésben áll</b> a többi mérnöki iparág pozícióival — a különbség a tartalom (műhold vs. autó), nem a szerep. A táblázat azt mutatja, mennyire nyitott az adott szerep más iparágak felé.</p>
+  <table class="tbl">
+    <tr><th>Pozíció</th><th>Mit jelent űrben</th><th>Átfedés más iparokkal</th><th>Űrmérnök MSc-vel?</th></tr>
+    <tr><td><b>Rendszermérnök</b></td><td>A műhold alrendszereinek (áramellátás, kommunikáció, irányítás) követelményeit és interfészeit hangolja össze</td><td><b>Teljes</b> — ugyanez a szerep az autóiparban (járműrendszerek) és a védelmi iparban is létezik</td><td><span class="verdict v-good">Természetes illeszkedés</span></td></tr>
+    <tr><td><b>Beágyazott szoftvermérnök</b></td><td>A fedélzeti számítógép és érzékelők szoftvere (C/C++, Linux), szigorú megbízhatósági szabványokkal</td><td><b>Teljes</b> — az autóipar (BMW, Bosch) ugyanezt a profilt keresi, csak más szabványokkal</td><td><span class="verdict v-good">Közvetlen cél</span></td></tr>
+    <tr><td><b>Elektronikai fejlesztőmérnök</b></td><td>Nyomtatott áramkörök, fedélzeti elektronika tervezése sugárzásvédelmi szempontokkal</td><td><b>Jó</b> — ipari elektronika mindenhol; az űr-specifikum (radiation hardening) a ritka rész</td><td><span class="verdict v-good">Igen</span></td></tr>
+    <tr><td><b>AIT- és tesztmérnök</b></td><td>Összeszerelés-integráció-teszt: hőváltó kamra, rázkódóasztal, szimulált űrkörülmények</td><td><b>Jó</b> — az autóipari validáció ugyanez tesztkörnyezet nélkül</td><td><span class="verdict v-good">Igen</span></td></tr>
+    <tr><td><b>Minőségbiztosítási mérnök</b></td><td>ECSS űrszabványok szerinti folyamatfelügyelet, „űrképesítés" bizonyítéklánc</td><td><b>Részleges</b> — a szerep ugyanaz, de a szabványrendszer más (autóipar: IATF 16949, repülés: EASA) — szabványváltás tanulást igényel</td><td><span class="verdict v-mid">Igen, áttanulással</span></td></tr>
+    <tr><td><b>Űralkalmazás-fejlesztő / földi szegmens</b></td><td>Távérzékelési adatok feldolgozása, földi állomás szoftver</td><td><b>Teljes</b> — gyakorlatilag szoftverfejlesztői munka, az IT-piacra is nyitott</td><td><span class="verdict v-good">Igen</span></td></tr>
+    <tr><td><b>Kutató / PhD</b></td><td>Egyetemi és ipari kutatás metszete (űridőjárás, sugárzásvédelem, anyagtudomány)</td><td>—</td><td><span class="verdict v-info">Diploma feljogosít</span></td></tr>
+    <tr><td><b>Tiszta CAD-szerkezettervező</b></td><td>Műhold-vázszerkezetek, tartók 3D-tervezése</td><td><b>Teljes</b> (autóipar) — de a gépész/jármű MSc-sek természetesebb bemenetét jelenti</td><td><span class="verdict v-bad">Kevesbé közvetlen</span></td></tr>
+  </table>
+  <div class="callout"><b>Átjárhatóság végzettség szempontból:</b> az űrmérnök MSc hivatalosan is mesterfokozatú mérnöki diploma — a „bármilyen mérnöki végzettség" típusú hirdetéseknek (rendszermérnök, QA, teszt, beágyazott SW) formálisan megfelel, és a C3S-féle „BSc VAGY MSc bármilyen beágyazott rendszerekhez kapcsolódó területről" követelményt kifejezetten kielégíti. A fenti táblázat szerint a pozíciók ~4/5-e átjárható más iparágakba — tehát <b>a diploma nem szűk kapu</b>, csak a tiszta gépész-tervezői pálya lesz vele nehezebben megközelíthető, mint egy gépész/jármű MSc-vel.</div>
+  <div class="callout bad"><b>NINCS értelme, ha:</b> csak azért választanád, mert „űr hangzik jól" · biztonságot akarsz (a piac az állami/ESA-pénztől függ) · nem akarsz Budapesten tanulni/dolgozni.</div>
+  <div class="callout"><b>Közbenső (ajánlott) út:</b> BME járműmérnök MSc repülőmérnöki specializáció + mellé C/C++ és beágyazott rendszerek — így a repülőgépipar, az űripar és az autóipar is nyitva marad. Vagy mechatronika/villamos MSc az űr-specifikus készségekkel.</div>
+</section>
+
+<!-- ================= TERV ================= -->
+<section class="tab" id="terv">
+  <h2>Döntés és cselekvési terv</h2>
+  <p class="lede">A döntési mátrix és a lépésenkénti terv.</p>
+
+  <h3>Döntési mátrix</h3>
+  <table class="tbl">
+    <tr><th>Ha ez a célod…</th><th>Legjobb út</th><th>Miért</th><th>Reális itthon?</th></tr>
+    <tr><td>Repülőgépek tervezése</td><td><b>BME járműmérnök MSc · Repülőmérnöki specializáció</b> (levelező is)</td><td>Egyenes bemenet, repülőgéptervezői tartalom; az Airbus gyulai Design Office ilyen profilú mérnököt keres</td><td><span class="verdict v-mid">Közepes</span></td></tr>
+    <tr><td>Avionika, repülőgép-elektronika</td><td>Mechatronikai / villamosmérnök MSc</td><td>A repülőgép nagy része elektronika; az űripar is így vesz fel</td><td><span class="verdict v-good">Jó</span></td></tr>
+    <tr><td>Műholdak, űrtechnológia</td><td>Űrmérnök MSc — vagy villamos/mechatronika + űr-készségek</td><td>19 fős évfolyam, REMTECH 2026, 4iG-programok; de kicsi, pénzfüggő piac</td><td><span class="verdict v-bad">Kicsi, növekvő</span></td></tr>
+    <tr><td>Drón, autonóm rendszerek</td><td>BME autonóm járműirányítási MSc</td><td>Egyenes bemenet; MI, szenzorika, gépi látás</td><td><span class="verdict v-mid">Közepes (magas ponthatár)</span></td></tr>
+    <tr><td>Legbiztosabb, legszélesebb út</td><td>Gépészeti modellezés vagy gépészmérnök MSc</td><td>CAD/CAE/CFD minden iparágban kell; legolcsóbb önköltség</td><td><span class="verdict v-good">Nagyon jó</span></td></tr>
+    <tr><td>Debrecenben maradás</td><td>DE mechatronikai MSc + BMW gyakornokság</td><td>A BMW és beszállítók helyben; de repülés-specifikus tartalom nincs</td><td><span class="verdict v-good">Jó — autóipari</span></td></tr>
+    <tr><td>Munka minél hamarabb</td><td>Wizz Engineer Pathway vagy BMW AcceleratiON</td><td>Mindkettő nyitott BSc-vel; a Wizz CAMO-út tisztán irodai</td><td><span class="verdict v-good">Jó</span></td></tr>
+  </table>
+
+  <h3 style="margin-top:30px">Cselekvési terv</h3>
+  <div class="phase"><div class="phase-n">1</div><div class="phase-b"><h3>Most — BSc hátralévő ~1,5 éve</h3><ul>
+    <li><b>Gyakornoki hely</b> — a legfontosabb lépés: BMW Debrecen (hallgatói program), Wizz Management Trainee, Bosch, Airbus Gyula, Admatis (Miskolc)</li>
+    <li><b>Angol B2/C1</b> — minden program feltétele</li>
+    <li><b>Egy szoftverkészség</b>: CATIA/NX/SolidWorks (tervező út) vagy C/C++ + MATLAB (elektronika/űr út)</li>
+    <li>LinkedIn-profil és portfólió (projektek, drón, TDK)</li>
+  </ul></div></div>
+  <div class="phase"><div class="phase-n">2</div><div class="phase-b"><h3>BSc lezárásakor — a döntés</h3><ul>
+    <li><b>Repülőgép:</b> BME járműmérnök MSc, Repülőmérnöki specializáció (levelezőn munka mellett is)</li>
+    <li><b>Űr biztos cél:</b> BME űrmérnök MSc — a kicsi piac tudatos elfogadásával; alternatíva: mechatronika/villamos MSc + űr-készségek</li>
+    <li><b>Munka:</b> Wizz Engineer Pathway, BMW AcceleratiON — MSc később, akár levelezőn</li>
+  </ul></div></div>
+  <div class="phase"><div class="phase-n">3</div><div class="phase-b"><h3>MSc alatt</h3><ul>
+    <li>Legalább egy komoly CAD/CAE vagy MATLAB/Simulink-projekt</li>
+    <li>Repüléshez köthető projekt (drón, UAV, avionika) vagy TDK a BME űrkutató csoportjában — így kóstolható az űrvilág kockázat nélkül</li>
+    <li>Angol nyelvű dokumentáció gyakorlása</li>
+  </ul></div></div>
+  <div class="phase"><div class="phase-n">4</div><div class="phase-b"><h3>Pályakezdéskor — reális elvárások</h3><ul>
+    <li>Átlagosan <b>~1 hónap</b> alatt találsz munkát; a tervező/CAE pozíciók ritkábbak, mint a minőség/gyártás — oda érdemes széles ívben jelentkezni</li>
+    <li>Reális kezdőbér: <b>600–850 ezer Ft bruttó</b> nagyszerű cégeknél; 3–5 év alatt ~1 millió Ft medián</li>
+    <li>Célpontok: repülés — Airbus Gyula, Wizz CAMO; űr — Remred/4iG, C3S, Admatis; tartalék — BMW, Bosch, Mercedes</li>
+  </ul></div></div>
+
+  <div class="callout" style="margin-top:24px"><b>Végső összegzés:</b> a járműmérnök BSc-d a legjobban fizető műszaki alapszak, ~1 hónapos átlagos elhelyezkedéssel. A repüléshez vezető legközvetlenebb út a <b>BME járműmérnök MSc repülőmérnöki specializációja</b> (levelezőn is), a reális itthoni repülőgépipari tervezői munkaadó pedig az <b>Airbus gyulai tervezőirodája</b>. Az űr ajtaja nyitva — de a biztosabb változat a villamos/mechatronika MSc űr-specifikus készségekkel. A diplománál jobban számít: a gyakornokság, az angol és egy konkrét szoftverkészség.</div>
+</section>
+
+<p class="footnote">Készült 2026 novemberében · Minden szakadat hivatalos egyetemi forrásból ellenőrizve (DE MK, BME karok és felvételi portál, ME GEIK, SZE); a ponthatárok a felvi.hu, a felvi.bme.hu és az egyetemek közzétett listáinak „legutóbbi" értékei; a bér- és elhelyezkedési adatok a DPR nyilvános elemzéseiből és a Hays 2025 bérútmutatóból; az űripari adatok a BME, 4iG, HVG360 és Telex közléseiből. A ponthatárok, finanszírozási formák és specializációk a jelentkezés előtt ellenőrizendők az aktuális felvételi tájékoztatókban.</p>
+
+</main>
+
+<script>
+(function(){
+  // Tabs
+  var btns=document.querySelectorAll('.tab-btn'),tabs=document.querySelectorAll('.tab');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+    tabs.forEach(function(t){t.classList.remove('on')});
+    document.getElementById(b.dataset.tab).classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});
+  })});
+
+  // Wrap tables for horizontal scrolling on mobile + scroll hint
+  document.querySelectorAll('table').forEach(function(t){
+    var w=document.createElement('div');w.className='table-wrap';
+    var h=document.createElement('p');h.className='scroll-hint';
+    h.textContent='← Csúsztatható oldalra →';
+    t.parentNode.insertBefore(h,t);t.parentNode.insertBefore(w,t);w.appendChild(t);
+    w.addEventListener('scroll',function(){w.classList.add('scrolled')},{passive:true});
+  });
+
+  // Expandable cards
+  document.querySelectorAll('.card-head').forEach(function(h){
+    h.addEventListener('click',function(){h.parentElement.classList.toggle('open')});
+  });
+
+  // Filters
+  function bindChips(containerId,scope){
+    var chips=document.querySelectorAll('#'+containerId+' .chip');
+    chips.forEach(function(c){c.addEventListener('click',function(){
+      chips.forEach(function(x){x.classList.remove('on')});c.classList.add('on');
+      var f=c.dataset.f;
+      scope.forEach(function(card){
+        var tags=(card.dataset.tags||'').split(' ');
+        card.style.display=(f==='all'||tags.indexOf(f)>-1)?'':'none';
+      });
+    })});
+  }
+  bindChips('szak-chips',document.querySelectorAll('#szakok .card'));
+  bindChips('mk-chips',document.querySelectorAll('#munkakorok .card'));
+
+  // Open first card of each tab by default
+  document.querySelectorAll('.tab').forEach(function(t){
+    var first=t.querySelector('.card');if(first)first.classList.add('open');
+  });
+})();
+</script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  const DEFAULT_LINE_HEIGHT = 16;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  const PICK_CAPABILITIES = ["pick"];
+  const PICK_CHAIN_LENGTH = 4;
+  const PICK_MAX_TEXT_CHARS = 120;
+  const PICK_MAX_HTML_CHARS = 300;
+
+  function truncate(value, maxChars) {
+    return value.length > maxChars ? value.slice(0, maxChars - 1) + "…" : value;
+  }
+
+  function isPickableElement(element) {
+    return (
+      element instanceof Element &&
+      element !== document.documentElement &&
+      element !== document.body
+    );
+  }
+
+  function resolvePickTarget(x, y) {
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+    const element = document.elementFromPoint(x, y);
+    return isPickableElement(element) ? element.closest("svg") || element : null;
+  }
+
+  function pickLabel(element) {
+    if (element.id) return element.localName + "#" + element.id;
+    return [element.localName].concat(Array.from(element.classList).slice(0, 2)).join(".");
+  }
+
+  // Only attributes that help find the element in source. data-* values and URL
+  // query strings or fragments can carry tokens.
+  const PICK_ATTRIBUTES = new Set([
+    "id",
+    "class",
+    "name",
+    "type",
+    "role",
+    "alt",
+    "aria-label",
+    "href",
+    "src",
+  ]);
+
+  function pickAttributeValue(attribute) {
+    return attribute.name === "href" || attribute.name === "src"
+      ? attribute.value.split(/[?#]/)[0]
+      : attribute.value;
+  }
+
+  function describePickElement(element) {
+    const chain = [];
+    for (
+      let current = element;
+      isPickableElement(current) && chain.length < PICK_CHAIN_LENGTH;
+      current = current.parentElement
+    ) {
+      chain.unshift(current);
+    }
+    const attributes = Array.from(element.attributes)
+      .filter((attribute) => PICK_ATTRIBUTES.has(attribute.name))
+      .map((attribute) => ` ${attribute.name}="${pickAttributeValue(attribute).replace(/"/g, "&quot;")}"`)
+      .join("");
+    const text = (element.innerText || element.textContent || "").replace(/\s+/g, " ").trim();
+    return {
+      chain: chain.map(pickLabel),
+      html: truncate(`<${element.localName}${attributes}>`, PICK_MAX_HTML_CHARS),
+      text: text ? truncate(text, PICK_MAX_TEXT_CHARS) : undefined,
+    };
+  }
+
+  // Hover asks once per frame, and innerText on a large section forces layout,
+  // so only the rect is re-read while the pointer stays on the same element.
+  // Clicks ask for fresh details since the page may have changed the element.
+  let lastPick = null;
+
+  function describePickTarget(element, fresh) {
+    if (fresh || lastPick?.element !== element) {
+      lastPick = { element, details: describePickElement(element) };
+    }
+    const rect = element.getBoundingClientRect();
+    return {
+      rect: { x: rect.left, y: rect.top, width: rect.width, height: rect.height },
+      ...lastPick.details,
+    };
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+      capabilities: PICK_CAPABILITIES,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_PICK") {
+      const element = resolvePickTarget(event.data.x, event.data.y);
+      postToTrustedTop({
+        type: "INLINE_EDIT_PICK_RESULT",
+        seq: event.data.seq,
+        target: element ? describePickTarget(element, event.data.fresh === true) : null,
+      });
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_BY") {
+      const { deltaX, deltaY, deltaMode } = event.data;
+      if (!scrollForwarding || !Number.isFinite(deltaX) || !Number.isFinite(deltaY)) return;
+      if (deltaMode !== 0 && deltaMode !== 1 && deltaMode !== 2) return;
+      const lineHeight =
+        parseFloat(getComputedStyle(document.documentElement).lineHeight) || DEFAULT_LINE_HEIGHT;
+      const scaleX = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerWidth : 1;
+      const scaleY = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerHeight : 1;
+      // The selection overlay receives the wheel event instead of this iframe.
+      // Instant scrolling preserves trackpad deltas even on smooth-scroll sites.
+      window.scrollBy({ left: deltaX * scaleX, top: deltaY * scaleY, behavior: "instant" });
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
